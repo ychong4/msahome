@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'msahome/base.html' %}
+
+{% block title %}Send scores report{% endblock %}
+{% block content %}
+
+    <h1>Send scores report</h1>
+    <p>Enter the school e-mail address:</p>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-actions">
+      <button type="submit">Send</button>
+    </div>
+    <br>
+      <div class="form-actions">
+      <a href="{% url "referee_matches_list" %}">Back</a> &rsaquo;
+    </div>
+</form>
+{% endblock %}
+</html>

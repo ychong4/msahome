@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'msahome/base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        .body {
+            margin-bottom: 100px;
+        }
+        h1 {
+            font-size: 37px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .page {
+            text-align: center;
+            margin-right: 10px;
+            margin-bottom: 50px;
+            z-index: 9999;
+        }
+        .page button{
+            font-size: 30px
+        }
+
+        footer {
+            text-align: center;
+        }
+        h1 {
+            font-weight: bold;
+        }
+        h4 {
+           font-size: 24px;
+        }
+    </style>
+   <body>
+   {% if user.is_authenticated %}
+       <div class="page-container">
+
+           <h2 class="top-menu">Hello {{ user.username }},</h2>
+           <br>
+           <br>
+           <br>
+           <br>
+       <div class="landing-body">
+        <h1> Edit Your Matches Here:</h1>
+        <br><br>
+        <div class="page">
+            <a href="{% url 'referee_matches_list' %}"><button class="btn btn-primary page">Matches
+            </button></a>
+            </div>
+        </div>
+       </div>
+   {% endif %}
+   <div class="content container">
+       <div class="row">
+           <div class="col-md-12">
+               <div class="links">
+                   <!-- Example row of columns -->
+
+               </div>
+           </div>
+       </div>
+   </div>
+
+   </body>
+
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+
+
+{% endblock %}
+
+</html>

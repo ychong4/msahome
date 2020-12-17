@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'msahome/base.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        footer {
+            text-align: center;
+        }
+        h1 {
+            font-weight: bold;
+        }
+        h4 {
+           font-size: 24px;
+        }
+    </style>
+   <body>
+   </p>
+   {% if user.is_authenticated %}
+       <div class="page-container">
+
+           <h2 class="top-menu">Hello {{ user.username }},</h2>
+           <p>Please choose from above options.</p>
+
+       </div>
+   {% endif %}
+   <br>
+   <br>
+   <br>
+    <div class="links">
+       <!-- Example row of columns -->
+           <div class="col-md-15">
+               <div class="thumbnail">
+                   <div class="caption">
+                       <h2>View Tournaments Here</h2>
+                       <h4><a class="btn btn-primary btn-red" href="{% url 'tournaments_list' %}"
+                             role="button" style = "background-color: mediumseagreen">Tournaments</a></h4>
+                   </div>
+               </div>
+           </div>
+            <div class="col-md-15">
+               <div class="thumbnail">
+                   <div class="caption">
+                       <h2>View Schools Here</h2>
+                       <h4><a class="btn btn-primary btn-red" href="{% url 'schools_list' %}"
+                             role="button" style = "background-color: mediumseagreen">Schools</a></h4>
+                   </div>
+               </div>
+           </div>
+            <div class="col-md-15">
+               <div class="thumbnail">
+                   <div class="caption">
+                       <h2>About Missouri Soccer Association</h2>
+                       <h4><a class="btn btn-primary btn-red" href="{% url 'about_us' %}"
+                             role="button" style = "background-color: mediumseagreen">About Us</a></h4>
+                   </div>
+               </div>
+           </div>
+    </div>
+   <div class="content container">
+       <div class="row">
+           <div class="col-md-12">
+               <div class="links">
+                   <!-- Example row of columns -->
+
+               </div>
+           </div>
+       </div>
+   </div>
+
+   </body>
+
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+
+
+
+{% endblock %}
+
+</html>

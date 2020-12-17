@@ -1,0 +1,1 @@
+web: gunicorn msahome.wsgi --log-file -

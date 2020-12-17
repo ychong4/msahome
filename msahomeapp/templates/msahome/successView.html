@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'msahome/base.html' %}
+
+{% block title %}Success{% endblock %}
+{% block content %}
+
+    <h1>Your email has successfully sent!</h1>
+    <br>
+      <div class="form-actions">
+      <a href="{% url "login_landing" %}">Back</a> &rsaquo;
+    </div>
+</form>
+{% endblock %}
+</html>

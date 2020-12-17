@@ -1,0 +1,31 @@
+<html>
+<body>
+  <h1>Match Information</h1>
+  <p>
+    Match No. {{ match.match_ID }}</br>
+    <span class="secondary">
+      {{ match.date|date:"M d, Y" }}
+    </span>
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Home Team Score</th>
+        <th>Guest Team Score</th>
+        <th>Referee Comment</th>
+        <th>Match Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="row{% cycle "1" "2" %}">
+          <td>{{ match.home_team_score }}</td>
+          <td>{{ match.guest_team_score }}</td>
+          <td>{{ match.referee_comment }}</td>
+          <td>{{ match.match_detail }}</td>
+        </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

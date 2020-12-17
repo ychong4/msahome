@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% extends 'msahome/base.html' %}
+{% block content %}
+    <body>
+
+    <div class="row">
+        <h2 style="padding-left: 15Px">Team Players Information</h2>
+         <a href="{% url 'coach_players_new' %}" class="row"><span
+                    class="btn btn-primary">Add Player</span></a>
+     </div>
+    <div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr class="bg-info">
+                <th>Player ID</th>
+                <th>Team</th>
+                <th>School</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Eligibility Status</th>
+                <th>Red Cards</th>
+                <th>Yellow Cards</th>
+                <th colspan="3">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for player in players %}
+                <tr>
+                    <td>{{ player.player_ID }}</td>
+                    <td>{{ player.player_team_ID }}</td>
+                    <td>{{ player.player_school_ID  }}</td>
+                    <td>{{ player.player_last_name }}</td>
+                    <td>{{ player.player_first_name }}</td>
+                    <td>{{ player.player_address }}</td>
+                    <td>{{ player.player_city }}</td>
+                    <td>{{ player.player_state }}</td>
+                    <td>{{ player.player_zip }}</td>
+                    <td>{{ player.player_email  }}</td>
+                    <td>{{ player.player_phone }}</td>
+                    <td>{{ player.eligibility_status }}</td>
+                    <td>{{ player.player_yellowcards }}</td>
+                    <td>{{ player.player_redcards }}</td>
+
+                    <td><a href="{% url 'coach_players_edit' pk=player.pk %}"
+                           class="btn btn-warning">Edit</a></td>
+                    <td><a href="{% url 'coach_players_delete' pk=player.pk %}"
+                           onclick="return confirm('Are you sure you want to delete?')"
+                           class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+         {% if players.has_other_pages %}
+  <ul class="pagination">
+    {% if players.has_previous %}
+      <li><a href="?page={{ players.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in players.paginator.page_range %}
+      {% if players.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if players.has_next %}
+      <li><a href="?page={{ players.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+        {% endif %}
+
+
+    </div>
+
+
+    </body>
+{% endblock %}

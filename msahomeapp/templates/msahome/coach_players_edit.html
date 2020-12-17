@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'msahome/base.html' %}
+{% block title %}Players Edit{% endblock %}
+{% block content %}
+ <div class="edit-page" style="margin-bottom: 240px; margin-left: 50px">
+    <h1>Edit Player</h1>
+    <form method="POST" class="customer-order-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Update</button>
+    </form>
+ </div>
+{% endblock %}
+</html>

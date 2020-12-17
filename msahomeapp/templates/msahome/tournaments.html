@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% extends 'msahome/base.html' %}
+{% block content %}
+
+<body>
+    <div class="row">
+    <h2 style="padding-left: 15Px">Tournament Information</h2>
+    </div>
+
+    <div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr class="bg-info">
+                <th>Tournament Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for x in tournaments %}
+                <tr>
+                    <td><a href="{% url 'matches_list' pk=x.tournament_ID%}">{{ x.tournament_name }}</a></td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+         {% if tournaments.has_other_pages %}
+  <ul class="pagination">
+    {% if tournaments.has_previous %}
+      <li><a href="?page={{ tournaments.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in tournaments.paginator.page_range %}
+      {% if tournaments.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if tournaments.has_next %}
+      <li><a href="?page={{ tournaments.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+    </div>
+
+</body>
+
+{% endblock %}
+
+</html>
